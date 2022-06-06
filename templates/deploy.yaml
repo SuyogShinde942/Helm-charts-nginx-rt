@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: {{ .Values.deployment_name }}
+  name: {{ .Values.deployment_name }}
+
+
+
+spec:
+  replicas: {{ .Values.spec.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment_name }}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: {{ .Values.deployment_name }}
+    spec:
+      containers:
+      - image: suyog942/helm-practise:1
+        name: helm-practise
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
